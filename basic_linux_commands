@@ -1,81 +1,248 @@
-1.how to create a file---->
-  1.cat >> <filename>
-  2.touch <f1> <f2>
-  3.vim <f1>
-  4.nano <f1>
+ ls-----------> list of files
+pwd ------------> present working dir
+cd-----------> to change directory
+cp -----------> copy command
+cp -r m1 /opt/  -r is recursive m1 is dir /op/t is destination if -r is not used getting an error omitting
+mv---------------> rename the file or directory or move the file or dir
+cal ------------> calculator
+date-----------> to display date
+history ---------> to display history of commands
+grep-------------> to find specific command
+vi or vim -------------> to create file & to get i file
+touch -------------> to create file
+mkdir ----------> to create dir
+nano----------> to create  file & to get in
+cat ----------> to display content in file
+clear ----------> to clear terminal
+man ------->manuel page of particular command
+to check cpu info & mem info ---------> go to proc cd /proc/ dir then ll cat cpuinfo & cat meminfo
+pring -------------> to check the connectivity is their or not
+curl -------------> to check the particular url &  to download down zip or tar files from internet
+who -------------> who has loggedin to server
+wget -------------> to download tar or zip file from internet
+tree ------------> to see dir & sub dir as a list
+shutdown ------
+reboot ------> if the system hangs
+last ----------> who used the server
+touch m1 m2 m3 --------> to create multiple files
+mkdir -p m1/m2/m3 ----------> to create dir & sub dir if the parent dir is absent m1 is parent dir
 
-  -------for the diffrentiation of above commands read blog for basic followed to advanced linux-----
+Soft link
 
-2.Make directory=folder---->"mkdir"   <-----multiple directories also created follwed by name
+ln -s m1 v1  ----soft link it will reduce the size of m1 file, m1 is original file &  v1 is a soft link, if  delete
+m1 file soft link v1 won't work, it will work for file, dir as well 
+likewise if dir zia  dir haq is soft link if dir zia isdeleted, haq soft link won't work
 
-3.change directory ==> cd <directory name> or "cd .." <----for reverse 
+Hard link
+ln m1 v1
+It acts as a mirror ex m1 mirror of v1, can't be identified, hard link work only for file, no to dir
 
-4.to check present directory---->pwd
-5.copy----> cp file1 file2 
-6.move---->  mv file1 file2
-7.for listing present dir or files---->ls or ls-a(for hidden files)
-8. to create hidden files with any above command = touch .filename
+inode no each file & dir creates inode no in which we can differenciate soft & hard link
 
+File permissions
+drwx-r--r--   root root             -----> d means dir, - means file r- read ---4, w-write---2, x- execute---1   
+-     rwx        r--     r--     root         root               rw=6
+file  User/owner group   others   rootUser        rootgroup               r =4 
+                                                                   r =4
+change the permission for file
 
-9.for delteion of file multiple commands are used depending upon the type of file or data present in the file--------
- 1.rmdir <directory name> = for empty dir
- 2.rmdir -p dir1/dir2 =for parent child or sub child deltion
- 3.rmdir -pv 
- 4.rm -rf = remove non file or directory
+chmod 755 m1                       rwx-rx-rx=755
+  d         rwx        rx                rx
+    read, write, exe   read, exe     read,exe
+
+chmod -R 755 m1  -------> to apply permission to dir, sub dir, files
+
+Ownership
+
+chown user1:user1 m2
+      user   group
+
+chown -R user1 m1   v1 r is recurssive
+
+rm m1 to remove file it will yes or no
+rm -f m1 ----->  -f is forcefully to remove file, won't ask s or no
+
+rm -rf BLR  dir is removed ---> r is recurssively, f is forcefully
  
+create User   when user created group is created automatically
 
-10. history----> list of no. of commands run by user
+useradd zia  or adduser zia ---------->   it will create group as well
+if user is created need to check by using cat /etc/passwd   & also by usind id
+the users are stored in cat /etc/passwd
 
-                                
+deleting user
 
- important commands--->
+userdel -r haq   r is reurssive
 
-1. lsb_release -a --->name of your machine
-2.hostname--->name of  your server
-3.ifconfig----> to view ip adress.....install net-tools first 
-4.sudo su ---->switch user do --to increase the functionality of your machine
-5.apt install <pkg name> ---> to install downloaded software on your machine
-   apt install git---> for git installation
+once it is deleted won't be available
 
-6.which <pkg or filename> ------> to find where is your file or pakage is located
-  which git
+create & delete group
 
-7.wget <downloaded link> ----> to download something from internet-----first download and then install it
-8.whoami --->user name 
+groupadd group1  to create group
+groupdel group1 to delete group
 
-9.echo ----> to print something on your screen 
-10. grep ---->to find any word or file
-11. sort--->for sorting of file
+usermod -a -G group1 zia creating particular zia user to particular group1
 
-12. tree----> this is used for tree like reprenstation of data...you need to first install it then use it
+how to check above id zia
+
+LDAP--- light weight access protocol
+
+head -n 5 m1        -------> display top 5 lines
+head ------->  to display top 10 lines in the file
+
+tail m1 -------->  display 10 lines from bottom
+tail -n 5 m1  -----> bottom 5 lines
+
+top ---------> process info 
+free -----> 
+  
+yum -------> package manager, install the packages         Redhat, centos, Fedora
+
+yum update -------->it will upate all the packages
+yum install --------->to find what all packages in the server
+
+yum list | grep httpd---------> to find that particular httpd package in server
+yum info git -----------> displayed all the git info
+yum serach --------> 
+
+yum --help     to find all the commands
+
+yum install httpd* -y -------->it will remove all the packges start with h
+
+RPM-------> Red hat package manager
+
+rpm -Uvh file name to upgrade the version from 2.31           v-- verbose, h--- human redeable
+
+tar --  Archieving files
+
+tar -cvf zia.tar m1 ---- c-  cretae v- verbose  f- file 
+just it will copy m1 into zia.tar, it won't delete
+
+tar -cvf zia.tar m1 m2 m3        ---- added m1 m2 m3 into zia.tar
+
+tar -xvf zia.tar -----------> x -- extract v- verbose f- file   extracted files from zia.tar
+
+tar - tvf zia.tar ----->  without extracting it will display
+
+tar -rvf zia.tar m3  ---------> want to added some more files
 
 
-for basic to high ---->
+zip file
+zip haq.tar m1 m2 -----------> added m1 m2 into zip file & created
+unzipped file
 
-1.useradd <username> ----> to create user  in your machine
-2.groupadd <groupname> ---->to add group 
-3. gpasswd -a <username> <groupname> ----> to add  single user in your group
-  gpasswd -M <u1> <u2> <groupname> ------> to add multiple user in your group
-  cat /etc/group----> to see the list of member in a group
+unzip haq.zip m1 m2 ---------> m1 m2 file are expose 
 
-4. ln -s <filename> ----> to create a soft link of your file in a desktop
-   ln <f1> <f2> -----> to create a backup file for the original  file
- 
-5. tar -cvf dir1.tar dir1 ------------> to combine all files in one just like zipping up the file
+unzip -l haq.tar ---------> want to see content without unzip
 
-6. gzip dir1.tar -------> to compress the the file
-7. gunzip dir1.tar.gz ----> to decomprss
-8. tar -xvf file1.tar----> to unzip
+to find files
+
+find / -name zia       / means entire server
+
+find /root -name zia      /root search in root dir
+
+find . -name zia          . means current dir
+
+find . -iname zia     -i means ignore case sensitive
+find . -iname zi*      t will search all files starts with zi in current dir
+
+find / -type f -iname zi*       only it will search for zia files becoz we have given -type f
+find / -type d -iname zi*       only it will search for zia dir becoz we have given -type f
+
+find / -iname *sh* it will display entire files or dir before & after sh in entire server
+find /-iname "*sh*" it will display entire sh diles & dir 
+
+df  -----------> to display the disk file sysytem
+df -h ---------> human readable format  
+df -k -------> display in kilo bytes
+df -m ------> display in mb
+df -a -------> display all the info
+df -ah -------> display in human readable format
+
+du  ----------->   diaplay disk usage
+du -h ------------> how much dir or file occupy or  display human reable format
+du -sh ------------> display which file or dir is consuming more
+
+
+ps ----------> process status
+ps -ef | grep 9000 ----------> display which process are running ex-- 9000
+
+100824   97438  0 11:28 pts/5    00:00:00 grep --color=auto 9000
+PID       PPID----parent process id 
+each & every server has process id PID 
+
+kill the process
+
+kill -9 100824  - means kill forcefully
+
+
+ifconfig ------ to display the ip ranges, ip address details in the particular server  only for linux
+
+ipconfig ------- to display the ip ranges, ip address details in the particular server  only for windows
+
+ipv4 --- internet protocol versin 4 majorly we use ipv4
+ipv6 ---- internet protocol version 6
+
+nslookup name server look up
+
+want to see DNS name of that server     to check particular server is resolved or not
+
+nslookup  www.google.in  it will give the ip address & vice verse 
+
+env  if i want to setup environment variables  env command
+
+ export Java_variable=1.8to setup the env variable
+
+echo $Java_version   -------> to print env variable
+
+echo is to print
+echo $ is to print varaiable
+
+unset Java_verion=1.8 to unset the env var
+
+env | grep TERM to find specific TERM host
+env | grep -i term  -i ignore case sensitive
+
+tac is opposit of cat command 
+
+locate is same as find command  to locate file, dir along with extensions
+
+more it will display size of terminal until reach 100% only down
+
+less it will display size of terminal until reach 100% up, down
+cat m1 |wc  -l  it will display no of lines from the file
+cat m1 |wc -w   it will display no of words from the file
+cat m1 |wc -L    it will display no of length of the word from the file
+
+commm to compare 2 files
+
+sleep 10 it will sleep for 10sec then it will exe next command
+
+exit  if ur in root user it will logout from root
+host if i give ip address it will dns name
+
+diff  ------> difference between 2 files
+diff m1 m2 diff b/w 2 files
+diff --side-by-side m1 m2  if i greter than before file it is more
+
+diffcheckup check in google
+
+ssh shell secure to connect remote server securly we use ssh
+
+ssh -i line.pem ec2-user@privat-ip add    -i inventry file
+
+scp securly copy  we can copy from local to remote server
+
+copy remote server to local  scp -i linux.pem ec2-user@public ip:/home/ec2-user/zia .
+copy local to remote server   scp -i linux.pem zia.txt ec2-users@publicip:/home/ec2-user
 
 
 
-  --ownership of file and directories
-
-1.chmod 777 <file or directory name> ------> to give read, write and execute permission to your user
-2. chown < user> <filename> ----->to transfer the ownership from root to user
-3.chgrp <groupname> <filename> ----->to change the group
 
 
 
-4. 1.vim <filename>.sh ----> to run multi command in one click make them in .sh  file
-   2. --> ./filename --->by running this all command will execute in sorted order
+
+
+
+
+
