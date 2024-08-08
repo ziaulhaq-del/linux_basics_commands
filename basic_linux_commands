@@ -16,7 +16,7 @@ cat ----------> to display content in file
 clear ----------> to clear terminal
 man ------->manuel page of particular command
 to check cpu info & mem info ---------> go to proc cd /proc/ dir then ll cat cpuinfo & cat meminfo
-pring -------------> to check the connectivity is their or not
+ping -------------> to check the connectivity is their or not
 curl -------------> to check the particular url &  to download down zip or tar files from internet
 who -------------> who has loggedin to server
 wget -------------> to download tar or zip file from internet
@@ -26,6 +26,7 @@ reboot ------> if the system hangs
 last ----------> who used the server
 touch m1 m2 m3 --------> to create multiple files
 mkdir -p m1/m2/m3 ----------> to create dir & sub dir if the parent dir is absent m1 is parent dir
+netstat used to display network connections
 
 Soft link
 
